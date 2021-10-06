@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {UserContext} from "./AuthProvider";
-import {loginGoogle, logout} from "../auth/firebaseAuth";
+import {loginFacebook, loginGoogle, logout} from "../auth/firebaseAuth";
 
 function Home() {
     const { user }  = useContext(UserContext);
@@ -10,7 +10,11 @@ function Home() {
             ( <div className='main'> <p>SNS Sample</p> </div> )}
         {user ? (  <button className='signin' onClick={logout}>Sign Out</button> ) :
             (
-                <button className='signin' onClick={loginGoogle}>Sign in With Google</button> )}
+                <div>
+                <button className='signin' onClick={loginGoogle}>Sign in With Google</button>
+                    <button className="signin" onClick={loginFacebook}>Sign in With Facebook</button>
+                </div>
+            )}
     </div>
   );
 }

@@ -2,25 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38205289-1a6d-4a37-a25e-7991023956c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/reviewtwits_frontend.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/AlreadyAuthRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/AuthRoute.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/auth/firebaseAuth.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/clientConfig.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/config/firebaseKey.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/AuthProvider.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/Home.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/Login.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/Login.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/Register.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/RegisterForm.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/RouterManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/firebaseAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/firebaseAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Login.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,7 +64,7 @@
       <workItem from="1633404754687" duration="4000" />
       <workItem from="1633404778035" duration="1974000" />
       <workItem from="1633429973975" duration="388000" />
-      <workItem from="1633430394316" duration="12792000" />
+      <workItem from="1633430394316" duration="17632000" />
     </task>
     <servers />
   </component>
