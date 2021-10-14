@@ -13,6 +13,7 @@ export const AuthProvider = ({children}) => {
 
     useEffect(() => {
         onAuthStateChanged(auth, async (firebaseUser) => {
+            console.log(firebaseUser)
             if(firebaseUser) {
                 const token = await firebaseUser.getIdToken();
                 defaultHeaders.Authorization = `Bearer ${token}`;

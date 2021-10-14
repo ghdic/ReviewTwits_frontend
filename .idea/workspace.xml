@@ -2,11 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38205289-1a6d-4a37-a25e-7991023956c1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/AdminDashboard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/Main.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/Navigator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/comment/Comment.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/Card.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/DashBoard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/OrderDetails.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/Recommend.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/AuthRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/AuthRoute.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/auth/firebaseAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/firebaseAuth.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/AuthProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Login.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Login.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RouterManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JavaScript File" />
         <option value="CSS File" />
+        <option value="JavaScript File" />
       </list>
     </option>
   </component>
@@ -37,11 +56,20 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1vs5mentoring/3.JS&amp;REACT/react_basic" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="nodejs_package_manager_path" value="yarn" />
     <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\IntelliJ IDEA 2021.1\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\dashboard" />
+    </key>
   </component>
   <component name="RunManager">
     <configuration name="start" type="js.build_tools.npm" nameIsGenerated="true">
@@ -64,7 +92,10 @@
       <workItem from="1633404754687" duration="4000" />
       <workItem from="1633404778035" duration="1974000" />
       <workItem from="1633429973975" duration="388000" />
-      <workItem from="1633430394316" duration="17632000" />
+      <workItem from="1633430394316" duration="21234000" />
+      <workItem from="1633575603041" duration="17988000" />
+      <workItem from="1634001271571" duration="10665000" />
+      <workItem from="1634105365606" duration="14452000" />
     </task>
     <servers />
   </component>

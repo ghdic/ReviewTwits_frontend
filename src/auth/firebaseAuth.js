@@ -1,12 +1,34 @@
 import { initializeApp } from 'firebase/app';
-import { getAuth, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail, updatePassword } from "firebase/auth";
+import { getAuth,GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail, updatePassword, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser  } from "firebase/auth";
 import firebaseKey from '../config/firebaseKey.json'
+import { getStorage } from 'firebase/storage';
 
 initializeApp(firebaseKey);
 export const auth = getAuth();
+export const storage = getStorage()
+
+export const deleteCurrentUser = () => {
+    deleteUser(auth.currentUser)
+        .catch((error) => {
+            alert(error.message);
+        })
+}
+
+export const registerEmailAndPassword = (email, password) => {
+    return createUserWithEmailAndPassword(auth, email, password)
+        .catch((error) => {
+            alert(error.message)
+        })
+}
+
+export const loginEmailAndPassword = (email, password) => {
+    return signInWithEmailAndPassword(auth, email, password)
+        .catch((error) => {
+            alert(error.message)
+        })
+}
 
 export const loginGoogle = () => {
-    console.log("hi")
     const provider = new GoogleAuthProvider();
     return signInWithPopup(auth, provider)
         .catch((error) => {

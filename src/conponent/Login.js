@@ -1,17 +1,18 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
-import './Login.css'
 import {Button, FloatingLabel, Form} from "react-bootstrap";
 import google_icon from '../image/google_icon.png'
 import facebook_icon from '../image/facebook_icon.png'
 import twitter_icon from '../image/twitter_icon.png'
-import {loginFacebook, loginGoogle, loginTwitter} from "../auth/firebaseAuth";
+import {loginEmailAndPassword, loginFacebook, loginGoogle, loginTwitter} from "../auth/firebaseAuth";
+import {Link} from "react-router-dom";
 
 const LoginStyled = styled.div`
   width: 400px;
   margin: 8rem auto;
   padding: 5rem;
   background-color: white;
+  box-shadow: 0 7px 25px rgb(0 0 0 / 8%);
   border-radius: 2.5rem;
   
   .login_title {
@@ -63,9 +64,21 @@ const LoginStyled = styled.div`
     height: 100%;
     border-radius: 50px;
   }
+  
+  .register_text {
+    font-weight: 600;
+    text-align: right;
+    margin: 10px;
+  }
 `
 
 function Login() {
+
+    const [userForm, setUserForm] = useState({
+        email:'',
+        password:''
+    })
+
   return (
       <LoginStyled>
           <h3 className="login_title">Log in</h3>
@@ -75,12 +88,13 @@ function Login() {
               label="Email address"
               className="mb-3"
           >
-              <Form.Control type="email" placeholder="name@example.com" />
+              <Form.Control type="email" placeholder="name@example.com" value={userForm.email} onChange={(e) => {setUserForm({...userForm, email:e.currentTarget.value})}} />
           </FloatingLabel>
           <FloatingLabel controlId="floatingPassword" label="Password">
-              <Form.Control type="password" placeholder="Password" />
+              <Form.Control type="password" placeholder="Password" value={userForm.password} onKeyPress={(e)=>{if(e.keyCode === 13)loginEmailAndPassword(userForm.email, userForm.password)}} onChange={(e) => {setUserForm({...userForm, password:e.currentTarget.value})}} />
           </FloatingLabel>
-          <Button variant="primary" size="lg" className="login_button">로그인</Button>
+          <Button variant="primary" size="lg" className="login_button" onClick={() => loginEmailAndPassword(userForm.email, userForm.password)}>로그인</Button>
+          <div className="register_text">계정이 없으십니까?<br/> <Link to="/register">회원가입</Link>하러가기</div>
           <div className="sign_with">
               <div className="login_div"></div>
               <div className="text">Sign With</div>
