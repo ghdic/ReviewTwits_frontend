@@ -2,30 +2,36 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38205289-1a6d-4a37-a25e-7991023956c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.eslintrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.prettierrc.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/AdminDashboard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/Main.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/Navigator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/comment/Comment.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/Card.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/DashBoard.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/OrderDetails.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/dashboard/Recommend.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/close.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/facebook.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/fake_review.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/instagram.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/menu.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/preloader.gif" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_category.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_confirm.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_effect1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_effect2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_import.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_not_reward.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/review_target.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/shopping_price.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/twitter.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/favicon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/public/favicon.ico" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/public/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/AuthRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/AuthRoute.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/auth/firebaseAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/firebaseAuth.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/AuthProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Home.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Login.css" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Register.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Register.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Navigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RegisterForm.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RouterManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/dashboard/Recommend.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/dashboard/Recommend.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/dashboard_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/dashboard_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/default_user_image.jpg" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/default_user_image.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/facebook_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/facebook_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/google_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/google_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/project_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/project_icon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/image/twitter_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/images/twitter_icon.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -56,7 +62,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../1vs5mentoring/3.JS&amp;REACT/react_basic" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/images" />
     <property name="list.type.of.created.stylesheet" value="CSS" />
     <property name="node.js.detected.package.eslint" value="true" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
@@ -65,9 +71,13 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\images" />
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\images" />
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\public" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\dashboard" />
     </key>
   </component>
@@ -95,7 +105,7 @@
       <workItem from="1633430394316" duration="21234000" />
       <workItem from="1633575603041" duration="17988000" />
       <workItem from="1634001271571" duration="10665000" />
-      <workItem from="1634105365606" duration="14452000" />
+      <workItem from="1634105365606" duration="37474000" />
     </task>
     <servers />
   </component>

@@ -6,7 +6,7 @@ import styled from "styled-components";
 import {Button, FloatingLabel, Form} from "react-bootstrap";
 import {storage} from "../auth/firebaseAuth";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
-import default_user from '../image/default_user_image.jpg'
+import default_user from '../images/default_user_image.jpg'
 
 const RegisterFormStyled = styled.div`
   width: 400px;

@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import default_user from '../../image/default_user_image.jpg'
+import default_user from '../../images/default_user_image.jpg'
 
 const RecommendStyled = styled.div`
   position: relative;

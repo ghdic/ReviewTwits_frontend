@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from "styled-components";
 import {Link} from "react-router-dom";
-import dashboard_icon from '../image/dashboard_icon.png'
-import project_icon from '../image/project_icon.png'
+import dashboard_icon from '../images/dashboard_icon.png'
+import project_icon from '../images/project_icon.png'
 import classnames from "classnames";
 import {logout} from "../auth/firebaseAuth";
 

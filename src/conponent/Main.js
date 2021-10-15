@@ -1,7 +1,7 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import Navigator from "./Navigator";
-import default_user_image from '../image/default_user_image.jpg'
+import default_user_image from '../images/default_user_image.jpg'
 import classnames from "classnames";
 import DashBoard from "./dashboard/DashBoard";
 import Home from "./Home";
