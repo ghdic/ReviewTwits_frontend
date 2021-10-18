@@ -1,6 +1,6 @@
 import React, {useContext} from 'react';
 import {Route} from "react-router-dom";
-import Home from "./Home";
+import Home from "./home/Home";
 import AlreadyAuthRoute from "../auth/AlreadyAuthRoute";
 import {UserContext} from "./AuthProvider";
 import Login from "./Login";

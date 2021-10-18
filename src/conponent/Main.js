@@ -4,7 +4,7 @@ import Navigator from "./Navigator";
 import default_user_image from '../images/default_user_image.jpg'
 import classnames from "classnames";
 import DashBoard from "./dashboard/DashBoard";
-import Home from "./Home";
+import Home from "./home/Home";
 
 const MainStyled = styled.div`
   .container {
