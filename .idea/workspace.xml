@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38205289-1a6d-4a37-a25e-7991023956c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/conponent/home/ChoiceBox.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/home/Contact.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/home/Price.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/home/WeirdCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/WaveFooter.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/follower/Follower.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/project/Project.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/project/ProjectCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/project/ProjectCreateor.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/wave.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RouterManager.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Navigator.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/dashboard/DashBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/dashboard/DashBoard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/home/Home.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/home/Home.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/home/Price.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/project/Price.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/home/WeirdCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/project/WeirdCard.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,8 +62,9 @@
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\home" />
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\project" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\images" />
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\home" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\public" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\dashboard" />
     </key>
@@ -85,7 +93,8 @@
       <workItem from="1633430394316" duration="21234000" />
       <workItem from="1633575603041" duration="17988000" />
       <workItem from="1634001271571" duration="10665000" />
-      <workItem from="1634105365606" duration="45223000" />
+      <workItem from="1634105365606" duration="54811000" />
+      <workItem from="1634833987265" duration="18857000" />
     </task>
     <servers />
   </component>
@@ -106,5 +115,15 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="javascript">
+          <url>file://$PROJECT_DIR$/src/conponent/WaveFooter.js</url>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

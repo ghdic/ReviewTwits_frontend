@@ -15,8 +15,9 @@ import review_confirm from '../../images/review_confirm.png'
 import review_target from '../../images/review_target.png'
 import Contact from "./Contact";
 import ChoiceBox from "./ChoiceBox";
-import WeirdCard from "./WeirdCard";
-import Price from "./Price";
+import WeirdCard from "../project/WeirdCard";
+import Price from "../project/Price";
+import WaveFooter from "../WaveFooter";
 
 const HomeStyled = styled.div`
   section {
@@ -54,8 +55,8 @@ function Home() {
         <section>
             <img className="full_img" src={review_target} alt=""/>
         </section>
-        <Price/>
         <Contact />
+        <WaveFooter/>
     </HomeStyled>
   );
 }

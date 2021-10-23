@@ -5,7 +5,7 @@ const WeirdCardStyled = styled.div`
     position: relative;
     width: 320px;
     height: 450px;
-    margin: 30px;
+    margin: 30px 100px;
     background: ${props => props.color || '#287bff'};
     border-radius: 20px;
     border-bottom-left-radius: 160px;
@@ -48,6 +48,7 @@ const WeirdCardStyled = styled.div`
         content: '';
         position: absolute;
         top: 0;
+        left: -50px;
         width: 50px;
         height: 50px;
         background: transparent;

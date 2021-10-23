@@ -3,6 +3,7 @@ import Card from "./Card";
 import styled from "styled-components";
 import OrderDetails from "./OrderDetails";
 import Recommend from "./Recommend";
+import WaveFooter from "../WaveFooter";
 
 const data = [
     {
@@ -81,6 +82,7 @@ function DashBoard() {
               <OrderDetails/>
               <Recommend/>
           </div>
+          <WaveFooter/>
       </DashBoardStyled>
   );
 }

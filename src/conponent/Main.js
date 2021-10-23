@@ -5,6 +5,11 @@ import default_user_image from '../images/default_user_image.jpg'
 import classnames from "classnames";
 import DashBoard from "./dashboard/DashBoard";
 import Home from "./home/Home";
+import WaveFooter from "./WaveFooter";
+import ProjectCreateor from "./project/ProjectCreateor";
+import Price from "./project/Price";
+import Project from "./project/Project";
+import Follower from "./follower/Follower";
 
 const MainStyled = styled.div`
   .container {
@@ -149,15 +154,23 @@ const MainStyled = styled.div`
 
 function Main() {
     const [menuActive, setMenuActive] = useState(false);
+    const [menu, setMenu] = useState('Home')
+    const menuDict = {
+        'Home':<Home/>,
+        'Dashboard':<DashBoard/>,
+        'Follower':<Follower/>,
+        'Project': <Project/>
+    }
 
     const tooggleMenu = () => {
         setMenuActive(!menuActive);
     }
 
+
   return (
     <MainStyled>
         <div className="container">
-            <Navigator menuActive={menuActive} />
+            <Navigator menuActive={menuActive} menu={menu} setMenu={setMenu} />
         </div>
 
         <div className={classnames('main', {active:menuActive})}>
@@ -175,8 +188,10 @@ function Main() {
                     <img src={default_user_image} alt=""/>
                 </div>
             </div>
-            {/*<DashBoard/>*/}
-            <Home/>
+            {
+                menuDict[menu]
+            }
+
         </div>
     </MainStyled>
   );

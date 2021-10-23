@@ -133,7 +133,7 @@ const NavigatorStyled = styled.div`
 `
 
 
-function Navigator({menuActive}) {
+function Navigator({menuActive, menu, setMenu}) {
   return (
     <NavigatorStyled className={classnames({active:menuActive})}>
         <ul>
@@ -143,43 +143,43 @@ function Navigator({menuActive}) {
                     <span className="title">ReviewTwits</span>
                 </Link>
             </li>
-            <li>
+            <li className={classnames({active: menu === 'Home'})} onClick={() => setMenu('Home')}>
                 <Link to="#">
                     <span className="icon"><ion-icon name="home-outline"></ion-icon></span>
                     <span className="title">Home</span>
                 </Link>
             </li>
-            <li className="active">
+            <li className={classnames({active: menu === 'Dashboard'})} onClick={() => setMenu('Dashboard')}>
                 <Link to="#">
                     <span className="icon"><i className="img_icon"><img src={dashboard_icon} alt=""/></i></span>
                     <span className="title">Dashboard</span>
                 </Link>
             </li>
-            <li>
+            <li className={classnames({active: menu === 'Follower'})} onClick={() => setMenu('Follower')}>
                 <Link to="#">
                     <span className="icon"><ion-icon name="people-outline"></ion-icon></span>
                     <span className="title">Follower</span>
                 </Link>
             </li>
-            <li>
+            <li className={classnames({active: menu === 'Project'})} onClick={() => setMenu('Project')}>
                 <Link to="#">
                     <span className="icon"><i className="img_icon"><img src={project_icon} alt=""/></i></span>
                     <span className="title">Project</span>
                 </Link>
             </li>
-            <li>
+            <li className={classnames({active: menu === 'Setting'})} onClick={() => setMenu('Setting')}>
                 <Link to="#">
                     <span className="icon"><ion-icon name="settings-outline"></ion-icon></span>
                     <span className="title">Setting</span>
                 </Link>
             </li>
-            <li>
+            <li className={classnames({active: menu === 'Sign In'})} onClick={() => setMenu('Sign In')}>
                 <Link to="#">
                     <span className="icon"><ion-icon name="log-in-outline"></ion-icon></span>
                     <span className="title">Sign In</span>
                 </Link>
             </li>
-            <li>
+            <li className={classnames({active: menu === 'Sign Out'})} onClick={() => setMenu('Sign Out')}>
                 <Link to="#">
                     <span className="icon"><ion-icon name="log-out-outline"></ion-icon></span>
                     <span className="title" onClick={logout}>Sign Out</span>
