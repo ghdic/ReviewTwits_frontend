@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from "styled-components";
 import ProjectCard from "./ProjectCard";
+import {useHistory} from "react-router-dom";
 
 const ProjectStlyed = styled.section`
   display: flex;
@@ -25,10 +26,13 @@ const ProjectStlyed = styled.section`
 `
 
 function Project() {
+
+    const history = useHistory()
+
   return (
     <ProjectStlyed>
         <div className="container">
-           <ProjectCard color='#afafaf' icon='add-circle-outline' project_name='Add Project' summary='새로운 프로젝트를 생성해보세요!'/>
+           <ProjectCard onClick={() => history.push('/project/create')} color='#afafaf' icon='add-circle-outline' project_name='Add Project' summary='새로운 프로젝트를 생성해보세요!'/>
            <ProjectCard color='#4eb7ff' icon='search-outline' project_name='Search' project_id='342341fabd11' summary='검색엔진 리뷰 전용'/>
            <ProjectCard color='#fd6494' icon='bar-chart-outline' project_name='BarChart' project_id='df124kzd12' summary='주식 앱 리뷰 하기 위해'/>
            <ProjectCard color='#43f390' icon='card-outline' project_name='Card' project_id='jf2341dd' summary='쇼핑몰 결제 관리 리뷰'/>

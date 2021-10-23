@@ -26,8 +26,8 @@ const FollowerStyled = styled.section`
     & .follower_wrap {
       padding: 20px 40px;
       display: flex;
-      justify-content: flex-start;
-      align-items: flex-start;
+      justify-content: start;
+      align-items: start;
       flex-wrap: wrap;
       
       

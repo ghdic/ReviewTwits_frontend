@@ -18,12 +18,12 @@ const data = [
     },
     {
         number: "284",
-        cardName: "Comments",
+        cardName: "Reviews",
         iconName: "chatbubbles-outline"
     },
     {
-        number: "$7,842",
-        cardName: "Earning",
+        number: "30,623,000₩",
+        cardName: "Monthly Income",
         iconName: "cash-outline"
     },
 ]

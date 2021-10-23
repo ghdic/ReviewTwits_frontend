@@ -9,17 +9,20 @@ import Register from "./Register";
 import RegisterForm from "./RegisterForm";
 import AuthRoute from "../auth/AuthRoute";
 import Comment from "./comment/Comment";
+import ProjectCreator from "./project/ProjectCreator";
+import ProjectHelp from "./project/ProjectHelp";
 
 function RouterManager() {
     const {user} = useContext(UserContext);
-    console.log(user)
     const authenticated = user != null;
 
   return (
       <>
           <Route exact path="/" component={Main} />
-          <AlreadyAuthRoute exact path="/login" authenticated={authenticated} component={Login}  />
           <Route exact path="/comment" component={Comment} />
+          <Route exact path="/project/create" component={ProjectCreator} />
+          <Route exact path="/project/help" component={ProjectHelp} />
+          <Route exact path="/:key" component={Main} />
       </>
   );
 }

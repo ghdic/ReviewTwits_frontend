@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import styled from "styled-components";
 import Navigator from "./Navigator";
 import default_user_image from '../images/default_user_image.jpg'
@@ -6,10 +6,14 @@ import classnames from "classnames";
 import DashBoard from "./dashboard/DashBoard";
 import Home from "./home/Home";
 import WaveFooter from "./WaveFooter";
-import ProjectCreateor from "./project/ProjectCreateor";
+import ProjectCreator from "./project/ProjectCreator";
 import Price from "./project/Price";
 import Project from "./project/Project";
 import Follower from "./follower/Follower";
+import Login from "./Login";
+import {UserContext} from "./AuthProvider";
+import {useHistory} from "react-router-dom";
+import NotFound404 from "./NotFound404";
 
 const MainStyled = styled.div`
   .container {
@@ -152,14 +156,31 @@ const MainStyled = styled.div`
   }
 `
 
-function Main() {
+function Main({match}) {
     const [menuActive, setMenuActive] = useState(false);
-    const [menu, setMenu] = useState('Home')
+    const [menu, setMenu] = useState(match.params.key)
+
+    const history = useHistory()
+
+
+    const {user} = useContext(UserContext);
+    const authenticated = user != null;
+
+    useEffect(() => {
+        if (match.params.key === 'login' && authenticated) {
+            setMenu('/home')
+            history.push('/home')
+        }
+        else
+            setMenu(match.params.key)
+    }, [match.params.key])
+
     const menuDict = {
-        'Home':<Home/>,
-        'Dashboard':<DashBoard/>,
-        'Follower':<Follower/>,
-        'Project': <Project/>
+        'home':<Home/>,
+        'dashboard':<DashBoard/>,
+        'follower':<Follower/>,
+        'project': <Project/>,
+        'login': <Login/>
     }
 
     const tooggleMenu = () => {
@@ -189,7 +210,7 @@ function Main() {
                 </div>
             </div>
             {
-                menuDict[menu]
+                menuDict[menu] === undefined ? <NotFound404/>:menuDict[menu]
             }
 
         </div>

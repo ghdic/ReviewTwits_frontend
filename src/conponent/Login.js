@@ -6,6 +6,7 @@ import facebook_icon from '../images/facebook_icon.png'
 import twitter_icon from '../images/twitter_icon.png'
 import {loginEmailAndPassword, loginFacebook, loginGoogle, loginTwitter} from "../auth/firebaseAuth";
 import {Link} from "react-router-dom";
+import Navigator from "./Navigator";
 
 const LoginStyled = styled.div`
   width: 400px;

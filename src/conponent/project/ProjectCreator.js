@@ -3,13 +3,14 @@ import styled from "styled-components";
 import default_user_image from '../../images/default_user_image.jpg'
 import {useHistory} from "react-router-dom";
 
-const AdminCreatorStyled = styled.section`
+const ProjectCreatorStyled = styled.section`
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  background: #ebeef2;
+  background: #3F3752;
   padding-top: 15px;
+  
 
   .layout {
     padding: 0 15px;
@@ -171,17 +172,20 @@ const AdminCreatorStyled = styled.section`
   }
 `
 
-function ProjectCreateor() {
+function ProjectCreator() {
 
     const [projectInput, setProjectInput] = useState({
-        'project_name':''
+        'project_name':'',
+        'category':''
     })
+
+    const history = useHistory()
 
 
   return (
-    <AdminCreatorStyled>
+    <ProjectCreatorStyled>
         <div className="layout">
-            <form>
+            <form onSubmit={()=> history.push('/project/help')}>
                 <div className="content_wrap">
                     <header className="settings_header">
                         <h2>
@@ -217,9 +221,9 @@ function ProjectCreateor() {
                                        className="fieldset_label">프로젝트 이름</label>
                                 <div className="fieldset_block">
                                     <input  id="project_name" className="input_textbox" type="text"
-                                    autoComplete="on" placeholder="프로젝트 이름을 입력하세요" maxLength="64" value={projectInput.project_name}
+                                    autoComplete="off" placeholder="프로젝트 이름을 입력하세요" maxLength="64" value={projectInput.project_name}
                                     onChange={(e) => setProjectInput({...projectInput, project_name: e.currentTarget.value})}/>
-                                    <p className="explain">Project URL will be: www.reviewtwits/project/<span className="text_gray_light">{projectInput.project_name === '' ? '<project_name>':projectInput.project_name}</span><span><br/><a
+                                    <p className="explain">Project URL will be: www.reviewtwits/projects/<span className="text_gray_light">{projectInput.project_name === '' ? '<project_name>':projectInput.project_name}</span><span><br/><a
                                             href="#">Customize Your URL</a></span></p></div>
                             </div>
                         </div>
@@ -227,16 +231,16 @@ function ProjectCreateor() {
                             <div className="fieldset">
                                 <label htmlFor="category" className="fieldset_label">카테고리</label>
                                 <div className="fieldset_block">
-                                    <select name="category" id="category" className="category">
-                                        <option value="">비즈니스</option>
-                                        <option value="">문화</option>
-                                        <option value="">영화</option>
-                                        <option value="">쇼핑</option>
-                                        <option value="">엔터테이먼트</option>
-                                        <option value="">게임</option>
-                                        <option value="">테크</option>
-                                        <option value="">뉴스</option>
-                                        <option value="">스포츠</option>
+                                    <select name="category" id="category" className="category" onChange={(e) => setProjectInput({...projectInput, category: e.currentTarget.value})}>
+                                        <option value="영화">영화</option>
+                                        <option value="쇼핑">쇼핑</option>
+                                        <option value="비즈니스">비즈니스</option>
+                                        <option value="문화">문화</option>
+                                        <option value="엔터테이먼트">엔터테이먼트</option>
+                                        <option value="게임">게임</option>
+                                        <option value="테크">테크</option>
+                                        <option value="뉴스">뉴스</option>
+                                        <option value="스포츠">스포츠</option>
                                     </select>
                                 </div>
                             </div>
@@ -252,8 +256,8 @@ function ProjectCreateor() {
                 </div>
             </form>
         </div>
-    </AdminCreatorStyled>
+    </ProjectCreatorStyled>
   );
 }
 
-export default ProjectCreateor;
+export default ProjectCreator;

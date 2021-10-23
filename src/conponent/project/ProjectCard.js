@@ -90,14 +90,10 @@ const ProjectCardStyled = styled.div`
     }
 `
 
-function ProjectCard({color, icon, project_name, project_id, summary}) {
-
-    const test = () => {
-        console.log(project_id)
-    }
+function ProjectCard({color, icon, project_name, project_id, summary, onClick}) {
 
   return (
-      <ProjectCardStyled color={color} onClick={test}>
+      <ProjectCardStyled color={color} onClick={onClick}>
           <div className="icon">
               <ion-icon name={icon}></ion-icon>
           </div>

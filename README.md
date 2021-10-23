@@ -1,6 +1,6 @@
-# Getting Started with ProjectCreateor React App
+# Getting Started with ProjectCreator React App
 
-This project was bootstrapped with [ProjectCreateor React App](https://github.com/facebook/create-react-app).
+This project was bootstrapped with [ProjectCreator React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
 
@@ -41,7 +41,7 @@ You don’t have to ever use `eject`. The curated feature set is suitable for sm
 
 ## Learn More
 
-You can learn more in the [ProjectCreateor React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+You can learn more in the [ProjectCreator React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
 
 To learn React, check out the [React documentation](https://reactjs.org/).
 
