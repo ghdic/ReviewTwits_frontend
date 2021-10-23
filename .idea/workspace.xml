@@ -2,22 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38205289-1a6d-4a37-a25e-7991023956c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/conponent/NotFound404.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/project/ProjectHelp.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/conponent/project/ProjectSetting.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/images/api_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/project/HelpCard.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/help_icon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/idea_icon.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Navigator.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RouterManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/dashboard/DashBoard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/dashboard/DashBoard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/follower/Follower.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/follower/Follower.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/project/Project.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/project/Project.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/project/ProjectCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/project/ProjectCard.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/project/ProjectCreateor.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/project/ProjectCreator.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +83,7 @@
       <workItem from="1633575603041" duration="17988000" />
       <workItem from="1634001271571" duration="10665000" />
       <workItem from="1634105365606" duration="54811000" />
-      <workItem from="1634833987265" duration="28929000" />
+      <workItem from="1634833987265" duration="34806000" />
     </task>
     <servers />
   </component>
