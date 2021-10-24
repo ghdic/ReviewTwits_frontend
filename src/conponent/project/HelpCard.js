@@ -114,7 +114,7 @@ function HelpCard({icon, title, content, link, link_content}) {
               <p>{content}</p>
               <Link to={link}>{link_content}</Link>
           </div>
-          <button className="more" onClick={() => setOpen(!open)}>more</button>
+          <button className="more" onClick={() => setOpen(!open)}>{open ? 'less':'more'}</button>
       </HelpCardStyled>
   );
 }

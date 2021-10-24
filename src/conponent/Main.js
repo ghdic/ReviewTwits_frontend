@@ -14,6 +14,7 @@ import Login from "./Login";
 import {UserContext} from "./AuthProvider";
 import {useHistory} from "react-router-dom";
 import NotFound404 from "./NotFound404";
+import Logout from "./Logout";
 
 const MainStyled = styled.div`
   .container {
@@ -167,20 +168,20 @@ function Main({match}) {
     const authenticated = user != null;
 
     useEffect(() => {
-        if (match.params.key === 'login' && authenticated) {
-            setMenu('/home')
-            history.push('/home')
-        }
-        else
+        if (['dashboard', 'follower', 'project', 'setting'].includes(match.params.key) && !authenticated) {
+            setMenu('/login')
+            history.push('/login')
+        } else {
             setMenu(match.params.key)
+        }
+
     }, [match.params.key])
 
     const menuDict = {
         'home':<Home/>,
         'dashboard':<DashBoard/>,
         'follower':<Follower/>,
-        'project': <Project/>,
-        'login': <Login/>
+        'project': <Project/>
     }
 
     const tooggleMenu = () => {

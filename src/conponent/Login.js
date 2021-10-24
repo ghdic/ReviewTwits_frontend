@@ -80,6 +80,11 @@ function Login() {
         password:''
     })
 
+    const onClickLogin = (login) => {
+        login()
+
+    }
+
   return (
       <LoginStyled>
           <h3 className="login_title">Log in</h3>

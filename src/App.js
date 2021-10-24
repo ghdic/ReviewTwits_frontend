@@ -8,13 +8,9 @@ import React from "react";
 function App() {
     return (
         <BrowserRouter>
-
-            <Switch>
-                <AuthProvider>
-                    <RouterManager/>
-                </AuthProvider>
-            </Switch>
-
+            <AuthProvider>
+                <RouterManager/>
+            </AuthProvider>
         </BrowserRouter>
     );
 }

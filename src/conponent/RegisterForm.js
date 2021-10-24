@@ -7,6 +7,7 @@ import {Button, FloatingLabel, Form} from "react-bootstrap";
 import {storage} from "../auth/firebaseAuth";
 import { ref, uploadBytes, getDownloadURL } from 'firebase/storage';
 import default_user from '../images/default_user_image.jpg'
+import {useHistory} from "react-router-dom";
 
 const RegisterFormStyled = styled.div`
   width: 400px;
@@ -84,6 +85,7 @@ const RegisterForm =  ({ setRegisterFormOpen }) => {
         age:'',
         gender:''
     })
+    const history = useHistory()
 
     let upload_image = (e) => {
         let image = e.target.files[0];
@@ -116,8 +118,9 @@ const RegisterForm =  ({ setRegisterFormOpen }) => {
             return
         }
         const data = res.json()
-        setRegisterFormOpen(false);
-        setUser(data);
+        setRegisterFormOpen(false)
+        setUser(data)
+        history.push('/')
     };
 
     return (
