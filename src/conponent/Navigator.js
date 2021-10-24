@@ -74,35 +74,13 @@ const NavigatorStyled = styled.div`
         }
       }
       
-      //&:hover a::before {
-      //    content: '';
-      //    position: absolute;
-      //    right: 0;
-      //    top: -50px;
-      //    width: 50px;
-      //    height: 50px;
-      //    background: transparent;
-      //    border-radius: 50px;
-      //    box-shadow: 35px 35px 0 10px var(--blue2);
-      //    pointer-events: none;
-      //}
-      //
-      //&:hover a::after {
-      //  content: '';
-      //  position: absolute;
-      //  right: 0;
-      //  bottom: -50px;
-      //  width: 50px;
-      //  height: 50px;
-      //  background: transparent;
-      //  border-radius: 50px;
-      //  box-shadow: 35px -35px 0 10px var(--blue2);
-      //  pointer-events: none;
-      //}
-      
       &:nth-child(1) {
         margin-bottom: 40px;
-        pointer-events: none;
+        cursor: pointer;
+        
+        &:hover {
+          background: var(--blue);
+        }
       }
       
       &:hover {
@@ -142,8 +120,8 @@ function Navigator({menuActive, menu}) {
   return (
     <NavigatorStyled className={classnames({active:menuActive})}>
         <ul>
-            <li>
-                <Link to="#">
+            <li className="logo">
+                <Link to="/">
                     <span className="icon"><ion-icon name="logo-twitter"></ion-icon></span>
                     <span className="title">ReviewTwits</span>
                 </Link>

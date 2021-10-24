@@ -2,16 +2,41 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="38205289-1a6d-4a37-a25e-7991023956c1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/conponent/Logout.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/js/test.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/comment/Comment.css" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/test/Shopping.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/Header.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/InfoSection.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/MainContent.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/Mainpage.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/Post.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/PostModal.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/StatusBar.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/Suggestions.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/conponent/twits/Twits.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/all.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/close_image.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/comment.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/default_userprofile.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/edit.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/find.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/home.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/love.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/message.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/share.svg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/images/upload.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/App.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/AuthRoute.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/AuthRoute.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/auth/firebaseAuth.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/auth/firebaseAuth.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/AuthProvider.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/AuthProvider.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/Login.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Login.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/RegisterForm.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RegisterForm.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/Navigator.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/Navigator.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/conponent/RouterManager.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/RouterManager.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/conponent/project/HelpCard.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/project/HelpCard.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/conponent/comment/Comment.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/conponent/comment/Comment.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -21,8 +46,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="CSS File" />
         <option value="JavaScript File" />
+        <option value="CSS File" />
       </list>
     </option>
   </component>
@@ -53,15 +78,16 @@
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\images" />
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\twits" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\public\js" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\project" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\images" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\home" />
       <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\public" />
-      <recent name="C:\Users\user\Desktop\gitfolder\reviewtwits_frontend\src\conponent\dashboard" />
     </key>
   </component>
   <component name="RunManager">
@@ -89,7 +115,7 @@
       <workItem from="1633575603041" duration="17988000" />
       <workItem from="1634001271571" duration="10665000" />
       <workItem from="1634105365606" duration="54811000" />
-      <workItem from="1634833987265" duration="38154000" />
+      <workItem from="1634833987265" duration="50386000" />
     </task>
     <servers />
   </component>

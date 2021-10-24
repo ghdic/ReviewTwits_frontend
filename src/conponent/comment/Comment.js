@@ -5,8 +5,8 @@ import DeleteIcon from "@material-ui/icons/Delete";
 import styled from "styled-components";
 
 const CommentStyled = styled.div`
+  
   .comment_view {
-    margin: 50px 30px;
   }
 
   .comment_view strong {
@@ -215,6 +215,10 @@ function Comment() {
                 date: "08-12 14:23:48",
             },
         ];
+
+        document.body.style.width = 'auto'
+        document.body.style.height = 'auto'
+        document.body.style.minHeight = 'auto'
 
         data.map((item, index) => (data[index] = { ...item, commentState: 0 }));
 

@@ -3,7 +3,6 @@ import { onAuthStateChanged } from "firebase/auth";
 import {defaultHeaders} from "../config/clientConfig";
 import RegisterForm from "./RegisterForm";
 import {auth} from "../auth/firebaseAuth";
-import {useHistory} from "react-router-dom";
 
 export const UserContext = React.createContext({});
 
@@ -11,7 +10,6 @@ export const UserContext = React.createContext({});
 export const AuthProvider = ({children}) => {
     const [user, setUser] = useState(null)
     const [registerFormOpen, setRegisterFormOpen] = useState(false);
-    const history = useHistory()
 
     useEffect(() => {
         onAuthStateChanged(auth, async (firebaseUser) => {
@@ -25,8 +23,7 @@ export const AuthProvider = ({children}) => {
                 });
                 if(res.status === 200) {
                     const user = await res.json();
-                    setUser(user);
-                    history.push('/')
+                    setUser(user)
                 } else if (res.status === 401) {
                     const data = await res.json();
                     if(data.code === "USER_NOT_FOUND") {

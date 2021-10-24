@@ -5,7 +5,7 @@ import google_icon from '../images/google_icon.png'
 import facebook_icon from '../images/facebook_icon.png'
 import twitter_icon from '../images/twitter_icon.png'
 import {loginEmailAndPassword, loginFacebook, loginGoogle, loginTwitter} from "../auth/firebaseAuth";
-import {Link} from "react-router-dom";
+import {Link, useHistory} from "react-router-dom";
 import Navigator from "./Navigator";
 
 const LoginStyled = styled.div`
@@ -80,8 +80,13 @@ function Login() {
         password:''
     })
 
+    const history = useHistory()
+
     const onClickLogin = (login) => {
-        login()
+        login().then((res) => {
+            if (res !== undefined)
+                history.push('/')
+        })
 
     }
 
@@ -107,9 +112,9 @@ function Login() {
               <div className="login_div"></div>
           </div>
           <div className="login_logo">
-              <button className="oauth_icon" onClick={loginGoogle}><img className="icon_image" src={google_icon} alt=""/></button>
-              <button className="oauth_icon" onClick={loginFacebook}><img className="icon_image" src={facebook_icon} alt=""/></button>
-              <button className="oauth_icon" onClick={loginTwitter}><img className="icon_image" src={twitter_icon} alt=""/></button>
+              <button className="oauth_icon" onClick={() => onClickLogin(loginGoogle)}><img className="icon_image" src={google_icon} alt=""/></button>
+              <button className="oauth_icon" onClick={() => onClickLogin(loginFacebook)}><img className="icon_image" src={facebook_icon} alt=""/></button>
+              <button className="oauth_icon" onClick={() => onClickLogin(loginTwitter)}><img className="icon_image" src={twitter_icon} alt=""/></button>
           </div>
       </LoginStyled>
   );

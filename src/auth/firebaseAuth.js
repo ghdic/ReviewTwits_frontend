@@ -2,6 +2,7 @@ import { initializeApp } from 'firebase/app';
 import { getAuth,GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail, updatePassword, signInWithEmailAndPassword, createUserWithEmailAndPassword, deleteUser  } from "firebase/auth";
 import firebaseKey from '../config/firebaseKey.json'
 import { getStorage } from 'firebase/storage';
+import {useHistory} from "react-router-dom";
 
 initializeApp(firebaseKey);
 export const auth = getAuth();
