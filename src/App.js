@@ -39,7 +39,7 @@ const GlobalStyle = createGlobalStyle`
 
   }
 
-  body, html, .App, #root, .outer {
+  body, .App, #root, .outer {
     width: 100%;
     height: 100%;
   }

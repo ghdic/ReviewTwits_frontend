@@ -214,6 +214,42 @@ function Comment() {
                 comment: "안녕하세요 ㅎㅎ",
                 date: "08-12 14:23:48",
             },
+            {
+                author: "인생마린",
+                userName: "ghdic",
+                parentId: "0",
+                commentId: "7",
+                postId: "1",
+                comment: "안녕하세요 ㅎㅎ",
+                date: "08-12 14:23:48",
+            },
+            {
+                author: "인생마린",
+                userName: "ghdic",
+                parentId: "0",
+                commentId: "7",
+                postId: "1",
+                comment: "안녕하세요 ㅎㅎ",
+                date: "08-12 14:23:48",
+            },
+            {
+                author: "인생마린",
+                userName: "ghdic",
+                parentId: "0",
+                commentId: "7",
+                postId: "1",
+                comment: "안녕하세요 ㅎㅎ",
+                date: "08-12 14:23:48",
+            },
+            {
+                author: "인생마린",
+                userName: "ghdic",
+                parentId: "0",
+                commentId: "7",
+                postId: "1",
+                comment: "안녕하세요 ㅎㅎ",
+                date: "08-12 14:23:48",
+            }
         ];
 
         document.body.style.width = 'auto'

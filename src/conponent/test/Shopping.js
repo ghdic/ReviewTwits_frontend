@@ -6,8 +6,12 @@ const ShoppingStyled = styled.section`
   height: 100vh;
   
   #test {
-    width: 100%;
-    height: 100%;
+    display: flex;
+    width: 100%; height: 100%; flex-direction: column; background-color: blue; overflow: hidden;
+    
+    & iframe {
+      flex-grow: 1; border: none; margin: 0; padding: 0;
+    }
   }
 `
 
