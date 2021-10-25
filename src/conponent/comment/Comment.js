@@ -256,6 +256,11 @@ function Comment() {
         document.body.style.height = 'auto'
         document.body.style.minHeight = 'auto'
 
+        const script = document.createElement('script')
+        script.src = '/js/comment.js';
+        script.async = true;
+        document.body.appendChild(script)
+
         data.map((item, index) => (data[index] = { ...item, commentState: 0 }));
 
         let comment = data.filter((item) => item.parentId === "0");

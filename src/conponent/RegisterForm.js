@@ -83,7 +83,8 @@ const RegisterForm =  ({ setRegisterFormOpen }) => {
         profileImage:'',
         birthday:'',
         age:'',
-        gender:''
+        gender:'',
+        reviewReveal:'0'
     })
     const history = useHistory()
 
@@ -110,7 +111,8 @@ const RegisterForm =  ({ setRegisterFormOpen }) => {
                 profileImage: userForm.profileImage,
                 birthday: userForm.birthday,
                 age: userForm.age,
-                gender: userForm.gender
+                gender: userForm.gender,
+                reviewReveal: userForm.reviewReveal
             }),
         });
         if(res.status != 200) {

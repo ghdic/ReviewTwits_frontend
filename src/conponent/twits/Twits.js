@@ -7,6 +7,7 @@ import {useHistory} from "react-router-dom";
 function Twits() {
     const {user} = useContext(UserContext);
     const authenticated = user != null;
+    console.log(user)
   return (
     <div>
         {

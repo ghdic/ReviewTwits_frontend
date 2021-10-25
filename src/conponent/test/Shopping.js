@@ -2,14 +2,14 @@ import React, {useEffect} from 'react';
 import styled from "@emotion/styled";
 
 const ShoppingStyled = styled.section`
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   
   #test {
     display: flex;
     width: 100%; height: 100%; flex-direction: column; background-color: blue; overflow: hidden;
     
-    & iframe {
+    iframe {
       flex-grow: 1; border: none; margin: 0; padding: 0;
     }
   }
@@ -30,10 +30,11 @@ function Shopping() {
 
   return (
     <ShoppingStyled>
+        <h1>Iframe Start</h1>
         <div id="test">
 
         </div>
-        <h1>Shopping</h1>
+        <h1>Ifame End</h1>
     </ShoppingStyled>
   );
 }
