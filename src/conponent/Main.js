@@ -168,12 +168,13 @@ function Main({match}) {
     const authenticated = user != null;
 
     useEffect(() => {
-        if (['dashboard', 'follower', 'project', 'setting'].includes(match.params.key) && !authenticated) {
-            setMenu('/login')
-            history.push('/login')
-        } else {
-            setMenu(match.params.key)
-        }
+        // if (['dashboard', 'follower', 'project', 'setting'].includes(match.params.key) && !authenticated) {
+        //     setMenu('/login')
+        //     history.push('/login')
+        // } else {
+        //     setMenu(match.params.key)
+        // }
+        setMenu(match.params.key)
 
     }, [match.params.key])
 
@@ -191,29 +192,31 @@ function Main({match}) {
 
   return (
     <MainStyled>
-        <div className="container">
-            <Navigator menuActive={menuActive} menu={menu} setMenu={setMenu} />
-        </div>
-
-        <div className={classnames('main', {active:menuActive})}>
-            <div className="topbar">
-                <div className="toggle" onClick={tooggleMenu}>
-                    <ion-icon name="menu-outline"></ion-icon>
-                </div>
-                <div className="search">
-                    <label>
-                        <input type="text" placeholder="Search here"/>
-                        <ion-icon name="search-outline"></ion-icon>
-                    </label>
-                </div>
-                <div className="user">
-                    <img src={default_user_image} alt=""/>
-                </div>
+        <div>
+            <div className="container">
+                <Navigator menuActive={menuActive} menu={menu} setMenu={setMenu} />
             </div>
-            {
-                menuDict[menu] === undefined ? <NotFound404/>:menuDict[menu]
-            }
 
+            <div className={classnames('main', {active:menuActive})}>
+                <div className="topbar">
+                    <div className="toggle" onClick={tooggleMenu}>
+                        <ion-icon name="menu-outline"></ion-icon>
+                    </div>
+                    <div className="search">
+                        <label>
+                            <input type="text" placeholder="Search here"/>
+                            <ion-icon name="search-outline"></ion-icon>
+                        </label>
+                    </div>
+                    <div className="user">
+                        <img src={user === null ? default_user_image : user.profileImage} alt=""/>
+                    </div>
+                </div>
+                {
+                    menuDict[menu] === undefined ? <NotFound404/>:menuDict[menu]
+                }
+
+            </div>
         </div>
     </MainStyled>
   );

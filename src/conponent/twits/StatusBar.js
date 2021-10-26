@@ -44,30 +44,30 @@ const StatusBarStyled = styled.div`
   }
 `
 
-function StatusBar({setPostData}) {
+function StatusBar({setReviewData}) {
     let [statusList, setStatusList] = useState([])
 
     useEffect(() => {
-        fetch(`https://instagram-spring.herokuapp.com/user`)
+        fetch(`http://localhost:8080/user`)
             .then(response => response.json())
             .then(data => {
                 setStatusList(data);
             })
     }, [])
 
-  const selectAllPost = () => {
-    fetch(`https://instagram-spring.herokuapp.com/post`)
+  const selectAllReview = () => {
+    fetch(`http://localhost:8080/review`)
       .then(response => response.json())
       .then(data => {
-        setPostData(data);
+          setReviewData(data);
       })
   }
 
-    const selectUserPost = (uid) => {
-      fetch(`https://instagram-spring.herokuapp.com/post/${uid}`)
+    const selectUserReview = (uid) => {
+      fetch(`http://localhost:8080/review/user/${uid}`)
         .then(response => response.json())
         .then(data => {
-          setPostData(data);
+            setReviewData(data);
         })
     }
 
@@ -75,14 +75,14 @@ function StatusBar({setPostData}) {
     <StatusBarStyled>
         <div className="statusbar_container">
           <div className="status">
-            <Avatar className="statusbar_status" onClick={selectAllPost} src={all_image} />
+            <Avatar className="statusbar_status" onClick={selectAllReview} src={all_image} />
             <div className="statusbar_text">
             </div>
           </div>
             {
                 statusList.map((item, index)=> (
                     <div className="status" key={index}>
-                        <Avatar className="statusbar_status" onClick={() => selectUserPost(item.uid)} src={item.profileImage === "" ? defaultProfile:item.profileImage} />
+                        <Avatar className="statusbar_status" onClick={() => selectUserReview(item.uid)} src={item.profileImage === "" ? defaultProfile:item.profileImage} />
                         <div className="statusbar_text">
                             {item.nickName}
                         </div>

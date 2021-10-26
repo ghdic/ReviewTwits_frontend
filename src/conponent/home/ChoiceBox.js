@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import classnames from "classnames";
 import review_category from "../../images/review_category.png";
 import review_effect1 from "../../images/review_effect1.png";
@@ -270,6 +270,14 @@ function ChoiceBox() {
         'review_import':'리뷰가 없는 상품은 소비자들이 선택을 주저하게 합니다. ReviewTwits와 함께 리뷰를 늘려나가보세요.'}
     const image_item = {'review_category':review_category, 'review_effect1':review_effect1, 'review_effect2':review_effect2, 'review_not_reward':review_not_reward, 'review_import':review_import}
     const bgcolor_item = {'review_category':'#fc4a55', 'review_effect1':'#ffcc02', 'review_effect2':'#92ba3c', 'review_not_reward':'#fb6cb2', 'review_import':'#ffb42b'}
+
+    const my_list = ['review_category', 'review_effect1', 'review_effect2', 'review_not_reward', 'review_import']
+    useEffect(() => {
+        setInterval(() => {
+            setSelectThumb(my_list[Math.floor(Math.random() * 5)])
+        }, 3000)
+
+    }, [])
 
   return (
       <ChoiceBoxStyled bgcolor={bgcolor_item[selectThumb]}>

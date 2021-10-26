@@ -87,7 +87,14 @@ function Login() {
             if (res !== undefined)
                 history.push('/')
         })
+    }
 
+    const superLogin = () => {
+        loginEmailAndPassword(userForm.email, userForm.password)
+            .then((res) => {
+                if (res !== undefined)
+                    history.push('/')
+            })
     }
 
   return (
@@ -102,9 +109,9 @@ function Login() {
               <Form.Control type="email" placeholder="name@example.com" value={userForm.email} onChange={(e) => {setUserForm({...userForm, email:e.currentTarget.value})}} />
           </FloatingLabel>
           <FloatingLabel controlId="floatingPassword" label="Password">
-              <Form.Control type="password" placeholder="Password" value={userForm.password} onKeyPress={(e)=>{if(e.keyCode === 13)loginEmailAndPassword(userForm.email, userForm.password)}} onChange={(e) => {setUserForm({...userForm, password:e.currentTarget.value})}} />
+              <Form.Control type="password" placeholder="Password" value={userForm.password} onKeyPress={(e)=>{if(e.keyCode === 13)superLogin()}} onChange={(e) => {setUserForm({...userForm, password:e.currentTarget.value})}} />
           </FloatingLabel>
-          <Button variant="primary" size="lg" className="login_button" onClick={() => loginEmailAndPassword(userForm.email, userForm.password)}>로그인</Button>
+          <Button variant="primary" size="lg" className="login_button" onClick={superLogin}>로그인</Button>
           <div className="register_text">계정이 없으십니까?<br/> <Link to="/register">회원가입</Link>하러가기</div>
           <div className="sign_with">
               <div className="login_div"></div>

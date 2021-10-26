@@ -15,13 +15,13 @@ const MainContentStlyed = styled.div`
 
 function MainContent() {
 
-  let [postData, setPostData] = useState([]);
+  let [reviewData, setReviewData] = useState([]);
 
   useEffect(() => {
-    fetch("https://instagram-spring.herokuapp.com/post")
+    fetch("http://localhost:8080/review")
       .then(response => response.json())
       .then(data => {
-        setPostData(data);
+          setReviewData(data);
       })
 
   }, [])
@@ -31,8 +31,8 @@ function MainContent() {
         <Grid container>
             <Grid item xs={2}></Grid>
             <Grid item xs={6} style={{minWidth:"650px"}}>
-                <StatusBar setPostData={setPostData} />
-                <Mainpage postData={postData} setPostData={setPostData} />
+                <StatusBar setReviewData={setReviewData} />
+                <Mainpage reviewData={reviewData} setReviewData={setReviewData} />
             </Grid>
             <Grid item xs={2} style={{"marginLeft":"50px", minWidth:"300px"}}>
                 <InfoSection />

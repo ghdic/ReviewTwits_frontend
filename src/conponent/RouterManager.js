@@ -8,12 +8,20 @@ import Main from "./Main";
 import Register from "./Register";
 import RegisterForm from "./RegisterForm";
 import AuthRoute from "../auth/AuthRoute";
-import Comment from "./comment/Comment";
+import Test from "./comment/test";
 import ProjectCreator from "./project/ProjectCreator";
 import ProjectHelp from "./project/ProjectHelp";
 import Logout from "./Logout";
 import Twits from "./twits/Twits";
 import Shopping from "./test/Shopping";
+import ProjectSetting from "./project/ProjectSetting";
+import Comment from "./comment/Comment";
+import Product from "./Product";
+import Sofa from "./product/Sofa";
+import Mike from "./product/Mike";
+import Camera from "./product/Camera";
+import Fire from "./product/Fire";
+
 
 function RouterManager() {
     const {user} = useContext(UserContext);
@@ -30,6 +38,11 @@ function RouterManager() {
               <Route exact path="/project/create" component={ProjectCreator} />
               <Route exact path="/project/help" component={ProjectHelp} />
               <Route exact path="/test/shopping" component={Shopping} />
+              <Route exact path="/projects/:projectId" component={ProjectSetting} />
+              <Route exact path="/product/sofa" component={Sofa} />
+              <Route exact path="/product/mike" component={Mike} />
+              <Route exact path="/product/camera" component={Camera} />
+              <Route exact path="/product/fire" component={Fire} />
               <Route exact path="/:key" component={Main} />
           </Switch>
       </>

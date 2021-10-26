@@ -55,6 +55,7 @@ function Home() {
         <section>
             <img className="full_img" src={review_target} alt=""/>
         </section>
+        <Price/>
         <Contact />
         <WaveFooter/>
     </HomeStyled>

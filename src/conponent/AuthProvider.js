@@ -3,6 +3,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import {defaultHeaders} from "../config/clientConfig";
 import RegisterForm from "./RegisterForm";
 import {auth} from "../auth/firebaseAuth";
+import axios from "axios";
 
 export const UserContext = React.createContext({});
 
@@ -17,19 +18,19 @@ export const AuthProvider = ({children}) => {
             if(firebaseUser) {
                 const token = await firebaseUser.getIdToken();
                 defaultHeaders.Authorization = `Bearer ${token}`;
-                const res = await fetch("http://localhost:8080/user/self", {
-                    method: "GET",
+                const requestOptions = {
+                    method: "Get",
                     headers: defaultHeaders,
-                });
-                if(res.status === 200) {
-                    const user = await res.json();
-                    setUser(user)
-                } else if (res.status === 401) {
-                    const data = await res.json();
-                    if(data.code === "USER_NOT_FOUND") {
-                        setRegisterFormOpen(true);
-                    }
                 }
+                const res = await fetch("http://localhost:8080/user/self", requestOptions)
+                    .then(response => response.json())
+                    .then(data => {
+                        if(data.uid === "0") {
+                            setRegisterFormOpen(true);
+                        } else {
+                            setUser(data)
+                        }
+                    })
             } else {
                 delete defaultHeaders.Authorizations;
                 setUser(null);

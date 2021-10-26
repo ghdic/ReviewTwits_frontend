@@ -1,10 +1,11 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import styled from "styled-components";
 import idea_img from '../../images/idea_icon.png'
 import api_img from '../../images/api_icon.png'
 import help_img from '../../images/help_icon.png'
 import {Link} from "react-router-dom";
 import HelpCard from "./HelpCard";
+import {UserContext} from "../AuthProvider";
 
 const ProjectHelpStyled = styled.section`
   display: flex;
@@ -35,7 +36,7 @@ const card_info = [
         icon:idea_img,
         title: 'ReviewTwits 적용하기',
         content: 'ReviewTwits는 간편하게 리뷰 시스템을 웹사이트에 추가하는 시스템 입니다. 프로젝트 설정에서 제공하는 임베디드 자바스크립트 소스를 본인의 웹사이트에 추가하시면 손쉽게 리뷰가 추가되시는 것을 확인 할 수 있습니다. 그리고 다양한 카테고리와 스타일의 리뷰를 제공합니다. 또한 댓글 스팸 필터링, 감정 분석 등의 AI 전문 기능도 지원합니다',
-        link: '/projects/1234',
+        link: '/project',
         link_content: '프로젝트 바로가기'
     },
     {
@@ -55,6 +56,8 @@ const card_info = [
 ]
 
 function ProjectHelp() {
+    const {user} = useContext(UserContext);
+    console.log(user)
   return (
     <ProjectHelpStyled>
         <h2>프로젝트 생성이 완료되었습니다!</h2>

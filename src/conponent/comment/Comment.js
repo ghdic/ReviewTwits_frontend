@@ -1,381 +1,273 @@
-import React, { useEffect, useState } from "react";
-import ReplyIcon from "@material-ui/icons/Reply";
-import EditIcon from "@material-ui/icons/Edit";
-import DeleteIcon from "@material-ui/icons/Delete";
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
+import {Avatar} from "@material-ui/core";
+import {defaultHeaders} from "../../config/clientConfig";
+import qs from 'qs';
 
-const CommentStyled = styled.div`
-  
-  .comment_view {
-  }
 
-  .comment_view strong {
-    display: block;
-    padding: 10px 3px;
-    margin-left: 70px;
-  }
+const CommentStyle = styled.div`
+  position: relative;
+  display: flex;
+  align-content: space-around;
 
-  .comment_table {
-    border-spacing: 0px;
-    border-collapse: separate;
-    border: 1px solid #c2c2c2;
-    width: 1000px;
-    margin: 0 auto;
-    word-break: break-word;
-  }
+  .card {
+    width: 578px;
+    background: #222033;
+    border-radius: 10px;
+    box-sizing: border-box;
+    padding: 60px 0px 180px 0;
 
-  .comment_table td {
-    border-top-style: dotted;
-    border-top-color: #c2c2c2;
-    border-top-width: 1px;
-  }
+    .title {
+      color: #ffffff;
+      font-size: 22px;
+      margin-left: 35px;
+    }
 
-  .username {
-    background-color: #f8f8f8;
-    padding: 20px 30px;
-    width: 20%;
-  }
+    .search-wrapper {
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
 
-  .nickname {
-    display: inline-block;
-    width: 80%;
-  }
+      img {
+        width: 23px;
+        height: 23px;
+        position: absolute;
+        left: 80px;
+        color: #8c8aa7;
+      }
 
-  .comment {
-    background-color: #fafafa;
-    padding: 20px 30px;
-    width: 80%;
-  }
+      input[type="text"] {
+        width: 450px;
+        height: 70px;
+        background: #262538;
+        border: 1px solid #49485d;
+        border-radius: 10px;
+        margin: 18px 0px;
+        box-sizing: border-box;
+        padding-left: 55px;
+        font-size: 18px;
+        color: #8c8aa7;
+        cursor: text;
 
-  .reply {
-    display: inline-block;
-    width: 20%;
-    float: left;
-  }
+        &:focus {
+          outline: none !important;
+        }
+      }
+    }
 
-  .reply_manage {
-    display: inline-block;
-    transform: translate(0, 2px);
-  }
+    .tags-wrapper {
+      max-height: 130px;
+      margin: 35px;
 
-  .btn-reply {
-    background: none;
-    border: 0;
-    color: #90b4e6;
-    font-size: 11px;
-    cursor: pointer;
-  }
+      .tags-header {
+        color: #ffffff;
+        font-size: 22px;
+        margin-bottom: 14px;
+      }
 
-  .btn-delete {
-    background: none;
-    border: 0;
-    color: rgb(49, 59, 59);
-    font-size: 11px;
-    cursor: pointer;
-  }
+      .tags-container {
+        .tag {
+          display: inline-flex;
+          background: #1d1c2d;
+          color: #8c8aa7;
+          border-radius: 5px;
+          padding: 12px;
+          margin: 10px 3px;
+          cursor: pointer;
+        }
 
-  .btn-edit {
-    background: none;
-    border: 0;
-    color: #79cd8c;
-    font-size: 11px;
-    cursor: pointer;
-  }
+        .selected {
+          background: #8780f8;
+          color: #ffffff;
+        }
+      }
+    }
 
-  .comment-input {
-    margin: 10px 0px;
-  }
+    .reviews-list {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
 
-  .comment-input textarea {
-    width: 85%;
-    height: 150px;
-    float: left;
-    padding: 10px;
-    font-size: 20px;
-    resize: none;
-  }
+      .review-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        width: 450px;
+        background: #2c2b3f;
+        border-radius: 10px;
+        margin: 20px 0px;
+        padding: 20px;
 
-  .comment-input a {
-    display: inline-block;
-    background-color: #2d69b8;
-    width: 15%;
-    height: 150px;
-    text-decoration: none;
-    color: white;
-    font-size: 20px;
-    text-align: center;
-    line-height: 150px;
-  }
+        .review-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-around;
+          color: #ffffff;
+          font-weight: bold;
 
-  .comment-edit {
-    margin: 10px;
-  }
+          .name-group {
+            display: flex;
+            align-items: center;
 
-  .comment-edit textarea {
-    width: 400px;
-    height: 300px;
-    float: left;
-    padding: 10px;
-    font-size: 20px;
-    resize: none;
-  }
-
-  .comment-edit input[type="submit"] {
-    width: 75px;
-    background-color: #2d69b8;
-    color: white;
-    font-size: 20px;
-    text-align: center;
-    line-height: 300px;
-    cursor: pointer;
-  }
-
-  .disable {
-    display: none;
-  }
-
-  .rotate-180 {
-    transform: rotate(-180deg);
-  }
-
-  .reply_icon {
-    transform: rotate(-180deg) translate(0, -5px);
-  }
-
-  .icon {
-    transform: translate(0, 5px);
-  }
-`;
-
-function Comment() {
-    let [commentList, setCommentList] = useState([]);
-    useEffect(() => {
-        const data = [
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "1",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "2",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "3",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "1",
-                commentId: "4",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "5",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "3",
-                commentId: "6",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "7",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "7",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "7",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "7",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
-            },
-            {
-                author: "인생마린",
-                userName: "ghdic",
-                parentId: "0",
-                commentId: "7",
-                postId: "1",
-                comment: "안녕하세요 ㅎㅎ",
-                date: "08-12 14:23:48",
+            .initials {
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              width: 48px;
+              height: 48px;
+              margin-right: 12px;
+              border-radius: 50%;
             }
-        ];
+          }
 
+          .rating {
+            i {
+              color: #f3d779;
+            }
+          }
+        }
+        
+        .review_image {
+          img {
+            width:300px;
+          }
+        }
+
+        .review-description {
+          color: #ffffff;
+          font-weight: 400;
+          margin: 0px 45px;
+        }
+
+        .review-details {
+          display: flex;
+          justify-content: space-between;
+          margin: 0px 45px;
+          align-items: center;
+          color: #8c8aa7;
+
+          .share-group {
+            display: flex;
+            padding: 8px;
+            border: 1px solid #1f1e2d;
+            border-radius: 5px;
+            cursor: pointer;
+
+            i {
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+    }
+  }
+`
+
+function Comment({ location }) {
+
+    const judgeEmotion = (emotion) => {
+        if (emotion >= 0.5) {
+            return "[" + (emotion * 100.0).toFixed(2) + "% 확률로 긍정적인 리뷰입니다😀" + "]"
+        } else {
+            return "[" + ((1.0 - emotion) * 100).toFixed(2) + "% 확률로 부정적인 리뷰입니다😠" + "]"
+        }
+    }
+
+    const [reviewList, setReviewList] = useState([])
+
+    useEffect(() => {
         document.body.style.width = 'auto'
         document.body.style.height = 'auto'
         document.body.style.minHeight = 'auto'
+        document.querySelector("#root").style.width = 'auto'
+        document.querySelector("#root").style.height = 'auto'
 
         const script = document.createElement('script')
         script.src = '/js/comment.js';
         script.async = true;
         document.body.appendChild(script)
 
-        data.map((item, index) => (data[index] = { ...item, commentState: 0 }));
+        const query = qs.parse(location.search, {
+            ignoreQueryPrefix: true
+        })
+        let payload = {
+            "path":query.path
+        }
 
-        let comment = data.filter((item) => item.parentId === "0");
-        let reply_comment = data.filter((item) => item.parentId !== "0");
-        reply_comment.map((item, index) =>
-            comment.splice(
-                comment.findIndex((i) => i.commentId === item.parentId) + 1,
-                0,
-                item
-            )
-        );
-        setCommentList(comment);
-    }, []);
+        const requestOptions = {
+            method: "POST",
+            headers: defaultHeaders,
+            body: JSON.stringify(payload)
+        }
+        fetch(`http://localhost:8080/review/path`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data)
+                setReviewList(data)
+            })
+    }, [])
 
-    const clickReply = (num, index) => {
-        let newCommentList = [...commentList];
-        if (newCommentList[index].commentState === num)
-            newCommentList[index].commentState = 0;
-        else newCommentList[index].commentState = num;
-        console.log(newCommentList);
-        setCommentList(newCommentList);
-    };
+  return (
+      <CommentStyle>
+          <div className="card">
+              <div className="title">Reviews</div>
+              <div className="search-wrapper">
+                  <img id="search-icon" src="https://assets.codepen.io/1839803/search-icon.svg"/>
+                  <input id="search-field" type="text" placeholder="Search reviews"/>
+              </div>
+              <div className="tags-wrapper">
+                  <div className="tags-header">Tags</div>
+                  <div className="tags-container">
+                      <div className="tag">Experience</div>
+                      <div className="tag">Quality</div>
+                      <div className="tag selected">Design</div>
+                      <div className="tag">Size</div>
+                      <div className="tag">Features</div>
+                      <div className="tag">Value</div>
+                      <div className="tag">Replacement</div>
+                  </div>
+              </div>
+              <div className="reviews-list">
+                  {
+                      reviewList.map((item, index) => (
+                          <div key={index} className="review-card">
+                              <div className="review-header">
+                                  <div className="name-group">
+                                      <Avatar src={item.user.imagePath} className="initials" />
+                                      <p>{item.user.nickname}</p>
+                                  </div>
+                                  <div className="rating">
+                                      {
+                                          Array.from(Array(item.score), (e, i) => (
+                                              <i id='one' className="fas fa-star"></i>
+                                          ))
+                                      }
+                                  </div>
+                              </div>
 
-    return (
-        <CommentStyled>
-            <div className="comment_view">
-                <strong>[댓글: 총 {commentList.length}개]</strong>
-                <table className="comment_table">
-                    <tbody>
-                    {commentList.map((item, index) => (
-                        <tr key={item.commentId}>
-                            <td className="username">
-                                {item.parentId !== "0" && (
-                                    <div className="reply">
-                                        <ReplyIcon className="rotate-180" />
-                                    </div>
-                                )}
-
-                                <div className="nickname">
-                                    {item.author}
-                                    <br />({item.userName})
-                                </div>
-                            </td>
-                            <td className="comment">
-                                <div className="text_wrapper" commentId={item.commentId}>
-                                    <span>{item.comment}</span>
-                                    <div className="reply_manage">
-                                        <button
-                                            className="btn-reply"
-                                            onClick={() => clickReply(1, index)}
-                                        >
-                                            <ReplyIcon className="reply_icon" />
-                                            답글
-                                        </button>
-                                        <button
-                                            className="btn-edit"
-                                            onClick={() => clickReply(2, index)}
-                                        >
-                                            <EditIcon className="icon" />
-                                            수정
-                                        </button>
-                                        <button
-                                            className="btn-delete"
-                                            onClick="delete_comment(this)"
-                                        >
-                                            <DeleteIcon className="icon" />
-                                            삭제
-                                        </button>
-                                    </div>
-                                    {item.commentState === 1 && (
-                                        <div className="comment-input">
-                                            <textarea name="comment_input"></textarea>
-                                            <a
-                                                href="javascript:void(0)"
-                                                onClick="create_comment(this)"
-                                                className="comment-btn"
-                                            >
-                                                등록
-                                            </a>
-                                        </div>
-                                    )}
-                                    {item.commentState === 2 && (
-                                        <div className="comment-input">
-                                            <textarea name="comment_input">{item.comment}</textarea>
-                                            <a
-                                                href="javascript:void(0)"
-                                                onClick="create_comment(this)"
-                                                className="comment-btn"
-                                            >
-                                                등록
-                                            </a>
-                                        </div>
-                                    )}
-                                </div>
-                            </td>
-                        </tr>
-                    ))}
-
-                    <tr>
-                        <td className="comment-input" colSpan="2" parentID="0">
-                            <textarea name="comment_input"></textarea>
-                            <a
-                                href="javascript:void(0)"
-                                onClick="create_comment(this)"
-                                className="comment-btn"
-                            >
-                                등록
-                            </a>
-                        </td>
-                    </tr>
-                    </tbody>
-                </table>
-            </div>
-        </CommentStyled>
-    );
+                              <div className="review-description">
+                                  <div className="review_image">
+                                      <img src={item.imagePath} alt=""/>
+                                  </div>
+                                  {item.content}
+                                  <p>{judgeEmotion(item.emotion)}</p>
+                              </div>
+                              <div className="review-details">
+                                  <div className="review-date">{item.createDate}</div>
+                                  <div className="share-group">
+                                      <i className="fas fa-share-alt"></i>
+                                      <p>Share</p>
+                                  </div>
+                              </div>
+                          </div>
+                      ))
+                  }
+              </div>
+          </div>
+      </CommentStyle>
+  );
 }
 
 export default Comment;

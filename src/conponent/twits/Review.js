@@ -7,8 +7,10 @@ import styled from "styled-components";
 import default_profile from '../../images/default_userprofile.jpg'
 import DeleteIcon from '@mui/icons-material/Delete';
 import UpdateIcon from '@mui/icons-material/Update';
-import PostModal from "./PostModal";
+import ReviewModal from "./ReviewModal";
 import {UserContext} from "../AuthProvider";
+import {defaultHeaders} from "../../config/clientConfig";
+import medal_img from '../../images/medal.png'
 
 const PostStyled = styled.div`
 
@@ -82,9 +84,38 @@ const PostStyled = styled.div`
     top: 8px;
     cursor: pointer;
   }
+  
+  .certification {
+    width: 30px;
+    height: 30px;
+    margin: 20px 5px;
+  }
+
+  .tooltips {
+    position: relative;
+    display: block;
+  }
+
+  .tooltips .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+  }
+
+  .tooltips:hover .tooltiptext {
+    visibility: visible;
+  }
 `
 
-function Post({post, updatePostData, deletePostData}) {
+function Review({review, updateReviewData, deleteReviewData}) {
 
     const [commentList, setCommentList] = useState([]);
     const [fixComment, setFixComment] = useState(0);
@@ -99,36 +130,34 @@ function Post({post, updatePostData, deletePostData}) {
     }
 
     useEffect(() => {
-        fetch(`https://instagram-spring.herokuapp.com/comments/${post.postId}`)
+        fetch(`http://localhost:8080/comment/${review.reviewId}`)
             .then(response => response.json())
             .then(data => {
                 setCommentList(data);
             })
-    }, [post.postId])
+    }, [review.reviewId])
 
     const submitComments = (event) => {
         if(event.key === "Enter") {
             let comment = event.currentTarget.value;
             if(comment !== null && comment !== undefined) {
                 let payload = fixComment === 0 ? {
-                    "postId": post.postId,
+                    "reviewId": review.reviewId,
                     "uid": user.uid,
-                    "comment": comment
+                    "content": comment
                 } : {
-                  "uid": user.uid,
-                  "comment": comment
+                  "content": comment
                 }
 
                 const requestOptions = {
                     method: "POST",
-                    headers: {'Content-type': "application/json"},
+                    headers: defaultHeaders,
                     body: JSON.stringify(payload)
                 }
-                let requestUrl = fixComment === 0 ? "https://instagram-spring.herokuapp.com/comments":`https://instagram-spring.herokuapp.com/comments/${fixComment}`;
+                let requestUrl = fixComment === 0 ? "http://localhost:8080/comment":`http://localhost:8080/comment/${fixComment}`;
                 fetch(requestUrl, requestOptions)
                     .then(response => response.json())
                     .then(data => {
-                        console.log(data)
                         if(fixComment === 0)
                           setCommentList([...commentList, data])
                         else {
@@ -150,13 +179,13 @@ function Post({post, updatePostData, deletePostData}) {
 
       const requestOptions = {
         method: "POST",
-        headers: {'Content-type': "application/json"},
+        headers: defaultHeaders,
         body: "{}"
       }
-      fetch(`https://instagram-spring.herokuapp.com/post/like/${post.postId}`, requestOptions)
+      fetch(`http://localhost:8080/review/like/${review.reviewId}`, requestOptions)
         .then(response => response.json())
         .then(data => {
-          updatePostData(data);
+          updateReviewData(data);
         })
         .catch(error => {
 
@@ -166,18 +195,16 @@ function Post({post, updatePostData, deletePostData}) {
     const onClickDeletePost = () => {
       if(!confirm("정말 삭제하시겠습니까?"))
         return
-      let payload = {
-        "uid": user.uid
-      }
+      let payload = {}
       const requestOptions = {
         method: "DELETE",
-        headers: {'Content-type': "application/json"},
+        headers: defaultHeaders,
         body: JSON.stringify(payload)
       }
-      fetch(`https://instagram-spring.herokuapp.com/post/${post.postId}`, requestOptions)
+      fetch(`http://localhost:8080/review/${review.reviewId}`, requestOptions)
         .then(response => response.json())
         .then(data => {
-          deletePostData(post);
+          deleteReviewData(review);
         })
         .catch(error => {
 
@@ -186,22 +213,20 @@ function Post({post, updatePostData, deletePostData}) {
 
     const onClickUpdateComment = (item) => {
       console.log(commentInput.current);
-      commentInput.current.value = item.comment;
+      commentInput.current.value = item.content;
       setFixComment(item.commentId)
     }
 
     const onClickDeleteComment = (commentId) => {
       if(!confirm("정말 삭제하시겠습니까?"))
         return
-      let payload = {
-        "uid": user.uid
-      }
+      let payload = {}
       const requestOptions = {
         method: "DELETE",
-        headers: {'Content-type': "application/json"},
+        headers: defaultHeaders,
         body: JSON.stringify(payload)
       }
-      fetch(`https://instagram-spring.herokuapp.com/comments/${commentId}`, requestOptions)
+      fetch(`http://localhost:8080/comment/${commentId}`, requestOptions)
         .then(response => response.json())
         .then(data => {
           let items = [...commentList];
@@ -215,46 +240,54 @@ function Post({post, updatePostData, deletePostData}) {
 
   return (
     <PostStyled className="post_container">
-        <div className="post_header">
-            <Avatar className="post_image" src={post.user.profileImage === "" ? default_profile:post.user.profileImage } />
-            <div className="post_username">{post.user.nickName}</div>
-          {
-            post.user.uid === user.uid ? (<div><UpdateIcon className="post_icon" onClick={handleOpen} />
-              <DeleteIcon className="post_icon" onClick={onClickDeletePost} /></div>):null
-          }
+        {user === null ? null:
+        <div>
+            <div className="post_header">
+                <Avatar className="post_image" src={review.user.profileImage === "" ? default_profile:review.user.profileImage } />
+                <div className="post_username">{review.user.nickname}</div>
+                {review.reviewType == 1 ? (<div className="tooltips">
+                    <img src={medal_img} className="certification" alt=""/>
+                    <span className="tooltiptext">이 마크는 실제로 구매한 제품인것을 인증합니다!</span>
+                </div>):null}
+                {
+                    review.user.uid === user.uid ? (<div><UpdateIcon className="post_icon" onClick={handleOpen} />
+                        <DeleteIcon className="post_icon" onClick={onClickDeletePost} /></div>):null
+                }
 
-        </div>
-        <div>
-            <img src={post.postPath} width="650px" alt=""/>
-          <div className="post_content">{post.content}</div>
-        </div>
-        <div>
-            <div style={{"marginLeft":"10px"}}>
-                <img src={love} className="post_reactimage" onClick={onClickLike} style={{cursor:"pointer"}} alt=""/>
-                <img src={comment} className="post_reactimage" alt=""/>
-                <img src={share} className="post_reactimage" alt=""/>
             </div>
-            <div style={{"fontWeight":"bold", "marginLeft":"20px"}}>
-                {post.likeCount} likes
+            <div>
+                <img src={review.imagePath} width="650px" alt=""/>
+                <div className="post_content">{review.content}</div>
             </div>
+            <div>
+                <div style={{"marginLeft":"10px"}}>
+                    <img src={love} className="post_reactimage" onClick={onClickLike} style={{cursor:"pointer"}} alt=""/>
+                    <img src={comment} className="post_reactimage" alt=""/>
+                    <img src={share} className="post_reactimage" alt=""/>
+                </div>
+                <div style={{"fontWeight":"bold", "marginLeft":"20px"}}>
+                    {review.likeCount} likes
+                </div>
+            </div>
+            <div>
+                {
+                    commentList.map((item, index) => (
+                        <div className="post_comment"
+                             key={item.commentId}>{item.user.nickname}: {item.content}
+                            {item.user.uid === user.uid ?
+                                (<div className="comment_icon_wrap"><UpdateIcon className="comment_icon" onClick={()=>onClickUpdateComment(item)} />
+                                    <DeleteIcon className="comment_icon" onClick={()=>onClickDeleteComment(item.commentId)} /></div>):null
+                            }</div>
+                    ))
+                }
+                <input className="post_commentbox" ref={commentInput} onKeyPress={submitComments} type="text" placeholder="Add a commnet..." />
+            </div>
+            <ReviewModal open={open} handleClose={handleClose} handlePostData={updateReviewData} review={review} />
         </div>
-        <div>
-            {
-                commentList.map((item, index) => (
-                    <div className="post_comment"
-                         key={item.commentId}>{item.user.nickName}: {item.comment}
-                      {item.user.uid === user.uid ?
-                        (<div className="comment_icon_wrap"><UpdateIcon className="comment_icon" onClick={()=>onClickUpdateComment(item)} />
-                      <DeleteIcon className="comment_icon" onClick={()=>onClickDeleteComment(item.commentId)} /></div>):null
-                      }</div>
-                ))
-            }
-            <input className="post_commentbox" ref={commentInput} onKeyPress={submitComments} type="text" placeholder="Add a commnet..." />
-        </div>
-      <PostModal open={open} handleClose={handleClose} handlePostData={updatePostData} post={post} />
+        }
     </PostStyled>
 
   );
 }
 
-export default Post;
+export default Review;

@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import Post from "./Post";
+import Review from "./Review";
 import uploadImage from '../../images/upload.png';
 import styled from "styled-components";
-import PostModal from "./PostModal";
+import ReviewModal from "./ReviewModal";
+import AuthenticReview from "./AuthenticReview";
+import {defaultHeaders} from "../../config/clientConfig";
 
 const MainpageStyled = styled.div`
   .mainpage_uploadicon {
@@ -23,9 +25,10 @@ const MainpageStyled = styled.div`
   }
 `
 
-function Mainpage({postData, setPostData}) {
+function Mainpage({reviewData, setReviewData}) {
 
     const [open, setOpen] = useState(false);
+    const [reportList, setReportList] = useState([])
     const handleOpen = () => {
         setOpen(true);
     }
@@ -33,33 +36,59 @@ function Mainpage({postData, setPostData}) {
         setOpen(false);
     }
 
-    const handlePostData = (data) => {
-      setPostData([data, ...postData]);
+    const handleReviewData = (data) => {
+        setReviewData([data, ...reviewData]);
   }
 
-    const updatePostData = (data) => {
-      let items = [...postData];
+    const updateReviewData = (data) => {
+      let items = [...reviewData];
       items[items.findIndex(el => el.postId === data.postId)] = data;
-      setPostData(items);
+      setReviewData(items);
     }
 
-    const deletePostData = (data) => {
-      let items = [...postData];
+    const deleteReviewData = (data) => {
+      let items = [...reviewData];
       items.splice(items.findIndex(el => el.postId === data.postId), 1);
-      setPostData(items);
+        setReviewData(items);
     }
+
+    const deleteReportData = (orderId) => {
+        let items = [...reportList];
+        items.splice(items.findIndex(el => el.orderId === orderId), 1);
+        setReportList(items);
+    }
+
+    useEffect(() => {
+        const requestOptions = {
+            method: "GET",
+            headers: defaultHeaders
+        }
+        fetch("http://localhost:8080/order/user/pending", requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setReportList(data);
+            })
+            .catch(error => {
+
+            })
+    }, [])
 
 
   return (
     <MainpageStyled>
         <div className="post_upload">
             <img src={uploadImage} className="mainpage_uploadicon" onClick={handleOpen} alt=""/>
-            <PostModal open={open} handleClose={handleClose} handlePostData={handlePostData} />
-
+            <ReviewModal open={open} handleClose={handleClose} handleReviewData={handleReviewData} />
         </div>
         {
-            postData.map((item, index) => (
-                <Post post={item} key={item.postId} updatePostData={updatePostData} deletePostData={deletePostData} />
+            reportList.map((item, index) => (
+                <AuthenticReview key={index} handleReviewData={handleReviewData} report={item} deleteReportData={deleteReportData} />
+            ))
+        }
+
+        {
+            reviewData.map((item, index) => (
+                <Review review={item} key={item.postId} updateReviewData={updateReviewData} deleteReviewData={deleteReviewData} />
             ))
         }
     </MainpageStyled>

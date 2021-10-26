@@ -1,7 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useContext, useEffect, useState} from 'react';
 import {Avatar} from "@material-ui/core";
 import defaultProfile from '../../images/default_userprofile.jpg'
 import styled from "styled-components";
+import {defaultHeaders, normalHeaders} from "../../config/clientConfig";
+import {UserContext} from "../AuthProvider";
+import classnames from "classnames";
 
 const SuggestionsStyled = styled.div`
   .suggestions_container {
@@ -34,19 +37,86 @@ const SuggestionsStyled = styled.div`
     font-weight: bold;
     margin: 10px
   }
+
+  .follow_btn {
+    position: relative;
+    padding: 3px 5px;
+    color: var(--white);
+    background: var(--blue);
+    border-radius: 6px;
+    border: none;
+    margin-left: 5px;
+    
+    &.active {
+      color: var(--gray);
+      background: rgba(0, 0, 0, 0.05);
+    }
+  }
 `
 
 function Suggestions() {
 
     let [suggestionList, setSuggestionList] = useState([])
+    let [follower, setFollower] = useState([])
+    const {user} = useContext(UserContext);
 
     useEffect(() => {
-        fetch(`https://instagram-spring.herokuapp.com/user/suggestions`)
+        fetch(`http://localhost:8080/user/suggestions`)
             .then(response => response.json())
             .then(data => {
                 setSuggestionList(data);
             })
+        const requestOptions = {
+            method: "GET",
+            headers: defaultHeaders
+        }
+
+        fetch('http://localhost:8080/follower', requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                setFollower(data)
+            })
+
     }, [])
+
+    const onClickFollow = (targetUid, check) => {
+        if (check) {
+            let payload = {
+            }
+
+            const requestOptions = {
+                method: "DELETE",
+                headers: defaultHeaders,
+                body: JSON.stringify(payload)
+            }
+            fetch(`http://localhost:8080/follower/${targetUid}`, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data)
+                    if(data == 0) {
+                        let items = [...follower];
+                        items.splice(items.findIndex(el => el.targetUid === targetUid), 1);
+                        setFollower(items)
+                    }
+                })
+        } else {
+            let payload = {
+                "uid": user.uid,
+                "targetUid": targetUid
+            }
+
+            const requestOptions = {
+                method: "POST",
+                headers: defaultHeaders,
+                body: JSON.stringify(payload)
+            }
+            fetch(`http://localhost:8080/follower`, requestOptions)
+                .then(response => response.json())
+                .then(data => {
+                    setFollower([...follower, data]);
+                })
+        }
+    }
 
   return (
     <SuggestionsStyled>
@@ -59,7 +129,7 @@ function Suggestions() {
                     suggestionList.map((item, index) => (
                         <div className="suggestions_friends" key={index}>
                             <Avatar className="suggestions_image" src={item.profileImage === "" ? defaultProfile:item.profileImage} />
-                            <div className="suggestions_username">{item.nickName}({item.userName})</div>
+                            <div className="suggestions_username">{item.nickname}<button onClick={() => onClickFollow(item.uid, follower.map(a=>a.targetUid).includes(item.uid))} className={classnames('follow_btn', {'active': follower.map(a=>a.targetUid).includes(item.uid)})}>{follower.map(a=>a.targetUid).includes(item.uid) ? 'Followed':'Follow'}</button></div>
                         </div>
                     ))
                 }

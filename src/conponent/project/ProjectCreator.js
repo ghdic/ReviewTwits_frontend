@@ -1,7 +1,9 @@
-import React, {useState} from 'react';
+import React, {useContext, useState} from 'react';
 import styled from "styled-components";
 import default_user_image from '../../images/default_user_image.jpg'
 import {useHistory} from "react-router-dom";
+import {UserContext} from "../AuthProvider";
+import {defaultHeaders} from "../../config/clientConfig";
 
 const ProjectCreatorStyled = styled.section`
   display: flex;
@@ -174,88 +176,140 @@ const ProjectCreatorStyled = styled.section`
 
 function ProjectCreator() {
 
+    const some_color = ['#4eb7ff', '#fd6494', '#43f390', '#ffb508', '#37ba82', '#cd57ff']
+    let value = Math.floor(Math.random() * 6)
+
     const [projectInput, setProjectInput] = useState({
-        'project_name':'',
-        'category':''
+        'projectName':'',
+        'summary':'',
+        'category':'movie',
+        'color':some_color[value],
+        'domain':'',
     })
-
+    const {user} = useContext(UserContext);
     const history = useHistory()
+    console.log(user)
 
+    const submitProject = () => {
+        let payload = {
+            "uid": user.uid,
+            "projectName": projectInput.projectName,
+            "summary": projectInput.summary,
+            "category": projectInput.category,
+            "color": projectInput.color,
+            "domain": projectInput.domain
+        }
+
+        const requestOptions = {
+            method: "POST",
+            headers: defaultHeaders,
+            body: JSON.stringify(payload)
+        }
+        fetch(`http://localhost:8080/project`, requestOptions)
+            .then(response => response.json())
+            .then(data => {
+                history.push('/project/help')
+            })
+
+
+    }
 
   return (
+
     <ProjectCreatorStyled>
-        <div className="layout">
-            <form onSubmit={()=> history.push('/project/help')}>
-                <div className="content_wrap">
-                    <header className="settings_header">
-                        <h2>
-                            프로젝트 생성
-                        </h2>
-                        <p>
-                            All fields are required.
-                        </p>
-                    </header>
-                    <section className="settings_content">
-                        <div className="spacing_bottom_double">
-                            <div className="fieldset">
-                                <label htmlFor="#" className="fieldset_label">소유자</label>
-                                <div className="fieldset_block">
-                                    <div>
-                                        <div className="align_mid">
-                                            <a href="#">
-                                                <img className="profile_img" src={default_user_image} alt=""/>
-                                            </a>
-                                            <div>
-                                                <h4>ghdic</h4>
+        {user === null ? null:
+            <div className="layout">
+                <div>
+                    <div className="content_wrap">
+                        <header className="settings_header">
+                            <h2>
+                                프로젝트 생성
+                            </h2>
+                            <p>
+                                All fields are required.
+                            </p>
+                        </header>
+                        <section className="settings_content">
+                            <div className="spacing_bottom_double">
+                                <div className="fieldset">
+                                    <label htmlFor="#" className="fieldset_label">소유자</label>
+                                    <div className="fieldset_block">
+                                        <div>
+                                            <div className="align_mid">
+                                                <a href="#">
+                                                    <img className="profile_img" src={user.profileImage} alt=""/>
+                                                </a>
+                                                <div>
+                                                    <h4>{user.nickname}</h4>
+                                                </div>
                                             </div>
+                                            <p className="explain">다른 계정으로 소유자를 바꾸고 싶으시면,<br/>
+                                                <a href="#">로그인 하여 계정을 바꾸세요</a></p>
                                         </div>
-                                        <p className="explain">다른 계정으로 소유자를 바꾸고 싶으시면,<br/>
-                                            <a href="#">로그인 하여 계정을 바꾸세요</a></p>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div className="spacing-bottom-double">
-                            <div className="fieldset ">
-                                <label htmlFor="project_name"
-                                       className="fieldset_label">프로젝트 이름</label>
-                                <div className="fieldset_block">
-                                    <input  id="project_name" className="input_textbox" type="text"
-                                    autoComplete="off" placeholder="프로젝트 이름을 입력하세요" maxLength="64" value={projectInput.project_name}
-                                    onChange={(e) => setProjectInput({...projectInput, project_name: e.currentTarget.value})}/>
-                                    <p className="explain">Project URL will be: www.reviewtwits/projects/<span className="text_gray_light">{projectInput.project_name === '' ? '<project_name>':projectInput.project_name}</span><span><br/><a
-                                            href="#">Customize Your URL</a></span></p></div>
-                            </div>
-                        </div>
-                        <div className="spacing_bottom_double">
-                            <div className="fieldset">
-                                <label htmlFor="category" className="fieldset_label">카테고리</label>
-                                <div className="fieldset_block">
-                                    <select name="category" id="category" className="category" onChange={(e) => setProjectInput({...projectInput, category: e.currentTarget.value})}>
-                                        <option value="영화">영화</option>
-                                        <option value="쇼핑">쇼핑</option>
-                                        <option value="비즈니스">비즈니스</option>
-                                        <option value="문화">문화</option>
-                                        <option value="엔터테이먼트">엔터테이먼트</option>
-                                        <option value="게임">게임</option>
-                                        <option value="테크">테크</option>
-                                        <option value="뉴스">뉴스</option>
-                                        <option value="스포츠">스포츠</option>
-                                    </select>
+                            <div className="spacing-bottom-double">
+                                <div className="fieldset ">
+                                    <label htmlFor="project_name"
+                                           className="fieldset_label">프로젝트 이름</label>
+                                    <div className="fieldset_block">
+                                        <input  id="project_name" className="input_textbox" type="text"
+                                                autoComplete="off" placeholder="프로젝트 이름을 입력하세요" maxLength="64" value={projectInput.projectName}
+                                                onChange={(e) => setProjectInput({...projectInput, projectName: e.currentTarget.value})}/>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </section>
-                    <footer className="setting_footer">
-                        <div className="footer_wrap">
-                            <div className="left_margin">
-                                <button className="submit_btn">프로젝트 생성</button>
+                            <div className="spacing-bottom-double">
+                                <div className="fieldset ">
+                                    <label htmlFor="project_name"
+                                           className="fieldset_label">프로젝트 설명</label>
+                                    <div className="fieldset_block">
+                                        <input  id="project_name" className="input_textbox" type="text"
+                                                autoComplete="off" placeholder="프로젝트 설명을 입력하세요" maxLength="64" value={projectInput.summary}
+                                                onChange={(e) => setProjectInput({...projectInput, summary: e.currentTarget.value})}/>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    </footer>
+                            <div className="spacing-bottom-double">
+                                <div className="fieldset ">
+                                    <label htmlFor="project_name"
+                                           className="fieldset_label">도메인 이름</label>
+                                    <div className="fieldset_block">
+                                        <input  id="project_name" className="input_textbox" type="text"
+                                                autoComplete="off" placeholder="도메인을 입력하세요" maxLength="64" value={projectInput.domain}
+                                                onChange={(e) => setProjectInput({...projectInput, domain: e.currentTarget.value})}/>
+                                    </div>
+                                </div>
+                            </div>
+                            <div className="spacing_bottom_double">
+                                <div className="fieldset">
+                                    <label htmlFor="category" className="fieldset_label">카테고리</label>
+                                    <div className="fieldset_block">
+                                        <select name="category" id="category" className="category" onChange={(e) => setProjectInput({...projectInput, category: e.currentTarget.value})}>
+                                            <option value="movie">영화</option>
+                                            <option value="shopping">쇼핑</option>
+                                            <option value="search">검색</option>
+                                            <option value="stock">주식</option>
+                                            <option value="credit">결제</option>
+                                            <option value="game">게임</option>
+                                            <option value="art">미술</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+                        <footer className="setting_footer">
+                            <div className="footer_wrap">
+                                <div className="left_margin">
+                                    <button className="submit_btn" onClick={submitProject}>프로젝트 생성</button>
+                                </div>
+                            </div>
+                        </footer>
+                    </div>
                 </div>
-            </form>
-        </div>
+            </div>}
+
     </ProjectCreatorStyled>
   );
 }
